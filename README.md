@@ -6,7 +6,7 @@ Narcissistic Dissoance Resolution Engine
 2. Field of the Invention
 This invention relates to repeating control loops for managing states in neurons, biological or artificial, and similar systems—including systems deemed similar through correlation. It unifies neuromodulatory factors as modules into a single adaptive engine.
 3. Background of the Invention
-Modern feedback and reinforcement-learning systems adjust behavior based only on external rewards or simple error signals. Neuroscience, however, teaches that distinct neuromodulators govern different aspects of internal regulation, while research suggests, P-tau, prunes neurons:
+Modern feedback and reinforcement-learning systems adjust behavior based only on external rewards or simple error signals. Neuroscience, however, teaches that distinct neuromodulators govern different aspects of state regulation:
 •	GABA for rapid inhibition and reset of runaway signals
 •	Serotonin (5-HT) for mood balance and baseline drive
 •	Norepinephrine (NE) for broad exploration when big changes are needed
