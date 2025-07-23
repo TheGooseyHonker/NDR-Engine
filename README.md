@@ -119,7 +119,8 @@ An adaptive control engine measures an agent’s current state utility, target s
 ![Fig1](https://github.com/user-attachments/assets/da03194d-a505-4a8a-b316-e5d0d166a080)
 ![Fig2](https://github.com/user-attachments/assets/f1e0bc4f-244f-4163-9d7f-527527893e72)
 
-Areas to Fortify
+Areas to Fortify (Will be deep-diving this at some point soon, but at least it's out.)
+
 Below are concrete details you can weave into your specification to eliminate any “black-box” concerns and shore up patentability.
 
 1. Utility-Function Details
