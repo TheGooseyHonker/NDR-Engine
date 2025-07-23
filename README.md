@@ -261,3 +261,132 @@ M	5 cycles	Number of consecutive cycles with	gap	< Δ₃ to invoke BDNF (cementi
 K	4 cycles	Number of consecutive cycles with	gap	> Δ₄ to invoke P-tau (pruning).
 
 Use this table in your “Parameter Definitions” section to give precise numeric and temporal boundaries for each neuromodulatory trigger.
+
+## Parameter Definitions
+
+| Symbol | Value       | Description                                                                                |
+|--------|-------------|--------------------------------------------------------------------------------------------|
+| Δ₁     | 0.20        | Moderate‐gap threshold; triggers Acetylcholine (focused scanning).                         |
+| Δ₂     | 0.50        | Large‐gap threshold; triggers GABA (inhibition) if positive or Glutamate if negative.      |
+| Δ₃     | 0.10        | Tight‐gap threshold; sustained small gaps invoke BDNF (long-term cementing).               |
+| Δ₄     | 0.80        | Tight‐gap threshold; sustained large gaps invoke P-tau (long-term pruning).                |
+| N      | 3 cycles    | Consecutive cycles with |gap| ≥ Δ₁ to invoke Norepinephrine (broad exploration).              |
+| M      | 5 cycles    | Consecutive cycles with |gap| < Δ₃ to invoke BDNF (cementing).                               |
+| K      | 4 cycles    | Consecutive cycles with |gap| > Δ₄ to invoke P-tau (pruning).                                 |
+
+---
+
+## Algorithm Appendix: μC Pseudocode
+
+```python
+# s_current: dict(feature_name→raw value)
+# w: dict(feature_name→weight), sum(w.values()) == 1.0
+
+def normalize(raw, min_v=0.0, max_v=1.0):
+    # clamp or rescale raw feature to [0,1]
+    return max(min_v, min(max_v, raw))
+
+def mu_C(s_current, w):
+    total = 0.0
+    for feature, raw_value in s_current.items():
+        x = normalize(raw_value)
+        total += w[feature] * x
+    return total  # utility in [0,1]
+
+# Example:
+# U_current = mu_C(s_current, w)
+# gap = 1.0 - U_current
+
+---
+
+Threshold & Trigger Rules
+
+gap = 1.0 – μC(s_current)
+
+1. GABA (inhibition)  
+   if gap ≥ Δ₂
+
+2. Glutamate (excitation)  
+   if gap ≤ –Δ₂
+
+3. Serotonin (stabilization)  
+   if –Δ₂ < gap ≤ –Δ₁
+
+4. Norepinephrine (exploration)  
+   if |gap| ≥ Δ₁ for ≥ N cycles
+
+5. Acetylcholine (scanning)  
+   if 0 < |gap| < Δ₁
+
+6. Dopamine (reinforcement)  
+   compare μC(prev_state) vs. μC(new_state) after each action
+
+7. BDNF (cementing)  
+   if |gap| < Δ₃ for ≥ M cycles
+
+8. P-tau (pruning)  
+   if |gap| > Δ₄ for ≥ K cycles
+
+---
+
+Alternative Embodiment: Hardware Example
+
+1. Embedded Neurostimulator (ARM Cortex-M4)
+
+• Platform: STM32F407 (ARM Cortex-M4 @168 MHz, FPU)
+• I/O:• 12-bit DAC for analog neuromodulator waveforms
+• ADC inputs (10 kHz sampling) for biosensor feedback
+
+• RTOS Tasks:• State sampling & feature extraction (≤ 1 ms cycle)
+• μC computation via DSP-accelerated MAC loops
+• Threshold compare & module dispatch
+
+• Storage: weights `wᵢ` and cycle counters in onboard flash
+• Timing: full loop < 1 ms to mimic neural timescales
+
+
+2. FPGA Accelerator (Xilinx Zynq-7000)
+
+• Device: Zynq-7000 SoC (dual-core ARM + FPGA fabric)
+• Logic:• Parallel MAC arrays for μC weighted-sum
+• Combinational comparators for Δ thresholds
+• BRAM for weights & counters
+
+• Interconnect: AXI-Lite (control) & AXI-Stream (data)
+• Latency: deterministic < 100 ns per dispatch
+
+
+---
+
+Claim-Style Headings
+
+1. A method for computing a dissonance gap, comprising:• extracting a feature vector `s_current`;
+• computing `μC(s_current)` via a weighted sum;
+• calculating `gap = 1.0 – μC(s_current)`; and
+• triggering a neuromodulator module when `|gap|` crosses a predefined threshold Δ.
+
+2. The method of claim 1, wherein Δ comprises Δ₁ and Δ₂, and GABA is invoked when `gap ≥ Δ₂`.
+3. The method of claim 1, wherein the feature vector includes at least a `non_violence_index` and a `truthfulness_coeff`.
+4. An apparatus for adaptive neuromodulation, comprising:• a processor implementing the μC pseudocode;
+• a DAC output for delivering neuromodulatory signals;
+• an ADC input for real-time feedback;
+• memory storing weights `wᵢ` and threshold values.
+
+5. The apparatus of claim 4, implemented on a microcontroller or FPGA, configured to complete a full loop cycle in under 1 ms.
+
+
+---
+
+Figure Export Guidelines
+
+• Redraw Fig. 1 & Fig. 2 in Inkscape/Illustrator with:• 0.5 pt black strokes for boxes & arrows
+• 0.25 pt black for reference numerals
+• 8 pt Arial for numerals; 9 pt for labels; 10 pt bold for “X/Y” & “Fig. N”
+• 0.6 in (43 pt) margins on 8.5 × 11 in canvas
+
+• Export as vector PDF or 1 000 dpi TIFF—no greyscale or anti‐aliasing
+
+
+---
+
+Copy-paste these sections into your README or specification to close enablement, abstraction, and drawing‐format gaps—your defensive publication will be rock‐solid.
