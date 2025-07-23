@@ -15,21 +15,26 @@ Modern feedback and reinforcement-learning systems adjust behavior based only on
 •	(…)
 •	Brain-Derived Neurotrophic Factor (BDNF) for cementing (integration)
 •	Phosphorylated Tau (P-tau) for pruning (disintegration)
+
+Additionally, some brain-inspired modules are as follows:
+•	Cerebellum (LLM – simple Input feedback for complex NDR-guided behaviors)
+•	Memory
+
 No known system ties these modulators together in a continuous loop that measures a multi-dimensional “contradiction gap” between where an agent is currently (etiological origin/cause) and where it wants to be (teleological end/purpose), then deploys the neuromodulatory method at the right time.
-4. Summary of the Invention
-U-ACIR Engine Summary: The Adaptive Contradiction Induction Resolution Engine works in a continuous loop to keep an agent in a desired state by measuring gaps, utilizing seven of many neuromodulatory modules in sequence and/or in parallel, then prunes or cements repeated iterations.
+5. Summary of the Invention
+NDR Engine Summary: The Narcissistic Dissonance Resolution Engine works in a continuous loop to keep an agent in a desired state by measuring gaps, utilizing seven of many neuromodulatory modules in sequence and/or in parallel, then prunes or cements repeated iterations.
 1.	Define the Target State: Call this s_target—the internal condition you want repeated (for example: alive, secure, energized, balanced).
-2.	Compute the Contradiction Gap: Measure the agent’s current state s_current and score each via your cognitive-behavioral utility function μ_C(·). Plug into the formula:
-Contradiction_Gap = μ_C(ACIR_Output)  + ( μ_C(s_target) – μ_C(s_current) )
+2.	Compute the Contradiction Gap (Dissonance): Measure the agent’s current state s_current and score each via your cognitive-behavioral utility function μ_C(·). Plug into the formula:
+Contradiction_Gap = μ_C(NDR_Output)  + ( μ_C(s_target) – μ_C(s_current) )
 • Here: 
 – μ_C(s_target) is the utility of the goal state. 
 – μ_C(s_current) is the utility of the present state. 
 – μ_C(ACIR_Output) is an additional utility score that effects how strongly the system reacts.
-3.	Interpret the Additional Factor μ_C(ACIR_Output)  
-• μ_C(ACIR_Output) > 0 : increases the gap (can push the system to explore novel states) 
-• μ_C(ACIR_Output) = 0 : does not influence or affect the gap (no drive to any state)
-• μ_C(ACIR_Output) < 0 : decreases the gap (can drive the system back toward s_target)
-4.	Invoke these Nine Modules in Order and/or in Parallel Based on the sign and size of your Contradiction Gap, trigger:
+3.	Interpret the Additional Factor μ_C(NDR_Output)  
+• μ_C(NDR_Output) > 0 : increases the gap (can push the system to explore novel states) 
+• μ_C(NDR_Output) = 0 : does not influence or affect the gap (no drive to any state)
+• μ_C(NDR_Output) < 0 : decreases the gap (can drive the system back toward s_target)
+4.	Invoke these Nine Modules in Order and/or in Parallel Based on the sign and size of your Contradiction Gap (Dissonance), trigger:
 1.	GABA (rapid inhibition)
 2.	Serotonin (5-HT; mood stabilization)
 3.	Norepinephrine (NE; broad exploration)
@@ -37,7 +42,7 @@ Contradiction_Gap = μ_C(ACIR_Output)  + ( μ_C(s_target) – μ_C(s_current) )
 5.	Dopamine (DA; reinforcement learning)
 6.	BDNF (long-term cementing (module integration) )
 7.	P-tau (long-term module pruning (module disintegration) )
-8.	Cerebellum (LLM – simple I/O for complex ACIR-guided behaviors)
+8.	Cerebellum (LLM – simple Input feedback for complex NDR-guided behaviors)
 9.	Memory - Long Term Memory (Simple storage devices capturing useful ACIR-determined and predefined (e.g. audio, spatial edges, spatial vertices, feedback logs, narrative logs, modules pruned—which can be reprocessed through ACIR for reflection, refinement, and/or archiving.)
 Each module targets a specific range of the gap to either calm, balance, explore, refine, learn, cement, or prune the agent’s state back to s_target.
 5.	Emergent synergy is achieved by orchestrating the first five modules via the simple gap calculator, outputting a response, then cementing or pruning based on successful contradiction gap closure(s). ACIR delivers improvements in stability, exploration reach, learning speed, and long-term adaptation that far exceed what any one—or any subset—of these neuromodulators, or modules, can achieve alone.
