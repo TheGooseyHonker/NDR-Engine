@@ -241,14 +241,23 @@ This will round out your provisional/defensive publication into a fully enabled 
 
 Tabulate Δ-constants and cycle counts in a clear “Parameter Definitions” section.
 Parameter Definitions
+
 Below is a clear table of your Δ-constants and cycle counts, with each parameter’s value and its role in triggering the corresponding NDR module.
 
 Symbol	Value	Description
+
 Δ₁	0.2	Lower gap threshold for moderate deviation; triggers Acetylcholine (focused scanning).
+
 Δ₂	0.5	Upper gap threshold for large deviation; triggers GABA (inhibition) or Glutamate (excitation).
+
 Δ₃	0.1	Tight gap threshold for sustained small deviation; triggers BDNF (long-term cementing).
+
 Δ₄	0.8	Tight gap threshold for sustained large deviation; triggers P-tau (long-term pruning).
+
 N	3 cycles	Number of consecutive cycles with	gap	≥ Δ₁ to invoke Norepinephrine (broad exploration).
+
 M	5 cycles	Number of consecutive cycles with	gap	< Δ₃ to invoke BDNF (cementing).
+
 K	4 cycles	Number of consecutive cycles with	gap	> Δ₄ to invoke P-tau (pruning).
+
 Use this table in your “Parameter Definitions” section to give precise numeric and temporal boundaries for each neuromodulatory trigger.
