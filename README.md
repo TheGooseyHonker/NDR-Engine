@@ -2,7 +2,7 @@ This is a Defensive Publication
 
 Provisional Application Specification Inventor: Charles Danger Miller V - July 2025
 1. Title of the Invention
-Universal Correlational Adaptive Contradiction Induction Resolution Engine (UAdaptCIRE)
+Dissoance Resolution Engine
 2. Field of the Invention
 This invention relates to repeating control loops for managing states in neurons, biological or artificial, and similar systems—including systems deemed similar through correlation. It unifies neuromodulatory factors as modules into a single adaptive engine.
 3. Background of the Invention
