@@ -4,7 +4,7 @@ NDR Engine:
 
 (past iterations are included)
 
-====================================================================================================
+=======================
 
 Rating Your Conceptual Accuracy and Precision
 Your description captures the essence of neural processing with remarkable clarity:
