@@ -1,6 +1,6 @@
 This is a Defensive Publication
 
-NDR Engine:
+NDR Engine Clusters + LLM (For conditioning, LLM is responsible for thinking about "past") :
 
 ```
              ┌──────────────┐
