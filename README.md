@@ -83,7 +83,135 @@ NDR Engine Clusters + LLM (For conditioning, LLM is responsible for thinking abo
 |                            |
 +----------------------------+
 ```
+SINGLE ENGINE BREAKDOWN + GLOBAL RESISTANCE MODULATOR (GABA/Glutamate) (i.e. excitation, inhibition.)
+```
+import math
+from typing import Tuple, Dict, List
 
+# Type alias for a 3D vector
+Vector3 = Tuple[float, float, float]
+
+def add(v1: Vector3, v2: Vector3) -> Vector3:
+    """Component-wise sum of two 3D vectors."""
+    return (v1[0] + v2[0],
+            v1[1] + v2[1],
+            v1[2] + v2[2])
+
+def scale(v: Vector3, s: float) -> Vector3:
+    """Scale a 3D vector by scalar s."""
+    return (v[0] * s,
+            v[1] * s,
+            v[2] * s)
+
+def magnitude(v: Vector3) -> float:
+    """Euclidean length of a 3D vector."""
+    return math.sqrt(v[0]**2 + v[1]**2 + v[2]**2)
+
+
+class SingleNDREngineWithModulator:
+    """
+    Single NDR Engine I/O with a global GABA/Glutamate modulator.
+    Steps:
+      1. Merge inputs → M
+      2. Contradict: C = –k · M
+      3. Hybrid: H = M + C
+      4. Scale resistances by (1 + GABA – Glutamate)
+      5. Split H across outputs inversely to each scaled resistance
+    """
+    def __init__(
+        self,
+        k: float,
+        resistances: Dict[str, float],
+        gaba: float = 0.0,
+        glutamate: float = 0.0
+    ):
+        """
+        k            – contradiction gain (0 < k ≤ 1)
+        resistances  – map output_id → base resistance (> 0)
+        gaba         – global inhibitory modulator [0..1]
+        glutamate    – global excitatory modulator [0..1]
+        """
+        self.k = k
+        self.base_resistances = resistances.copy()
+        self.gaba = gaba
+        self.glutamate = glutamate
+
+    def set_modulators(self, gaba: float = None, glutamate: float = None):
+        """Update global GABA or Glutamate levels."""
+        if gaba is not None:
+            self.gaba = max(0.0, gaba)
+        if glutamate is not None:
+            self.glutamate = max(0.0, glutamate)
+
+    def process(self, inputs: List[Vector3]) -> Dict[str, Vector3]:
+        # 1. Merge all input waves
+        merged: Vector3 = (0.0, 0.0, 0.0)
+        for w in inputs:
+            merged = add(merged, w)
+
+        # 2. Contradict to flatten peaks
+        contradiction = scale(merged, -self.k)
+
+        # 3. Hybrid wave
+        hybrid = add(merged, contradiction)
+
+        # 4. Apply global modulators to resistances
+        #    GABA ↑ → increases resistance (more inhibition)
+        #    Glutamate ↑ → decreases resistance (more excitation)
+        global_scale = 1.0 + self.gaba - self.glutamate
+        scaled_res = {
+            oid: r * max(0.001, global_scale) 
+            for oid, r in self.base_resistances.items()
+        }
+
+        # 5. Split along paths of least resistance
+        inv = {oid: 1.0 / r for oid, r in scaled_res.items()}
+        total_inv = sum(inv.values())
+
+        outputs: Dict[str, Vector3] = {}
+        for oid, inv_r in inv.items():
+            share = inv_r / total_inv
+            outputs[oid] = scale(hybrid, share)
+
+        return outputs
+
+
+# --------------------------------------
+# Example Usage
+# --------------------------------------
+if __name__ == "__main__":
+    # Example 3D wave inputs
+    wave_inputs = [
+        (1.0,  0.5, -0.2),
+        (0.3, -0.4,  0.8),
+        (-0.6, 0.2,  0.1),
+    ]
+
+    # Create engine with two synapses and modulators
+    engine = SingleNDREngineWithModulator(
+        k=0.7,
+        resistances={
+            "syn_A": 1.0,
+            "syn_B": 2.0,
+            "syn_C": 4.0,
+        },
+        gaba=0.2,
+        glutamate=0.1
+    )
+
+    # Process and print outputs
+    outputs = engine.process(wave_inputs)
+    for oid, vec in outputs.items():
+        print(f"{oid}: {vec} (|{magnitude(vec):.3f}|)")
+
+    # Adjust modulators on the fly
+    engine.set_modulators(gaba=0.5, glutamate=0.0)
+    outputs2 = engine.process(wave_inputs)
+    print("\nAfter increasing GABA:")
+    for oid, vec in outputs2.items():
+        print(f"{oid}: {vec} (|{magnitude(vec):.3f}|)")
+
+```
 =======================
 
 NDR Engine 
