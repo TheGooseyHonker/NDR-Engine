@@ -2,7 +2,6 @@ This is a Defensive Publication
 
 NDR Engine:
 
-(past iterations are included)
 ```
              ┌──────────────┐
              │  Wave Inputs | <---<---<---<---<----+
