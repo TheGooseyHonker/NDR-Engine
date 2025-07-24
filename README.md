@@ -59,7 +59,32 @@ NDR Engine Clusters + LLM (For conditioning, LLM is responsible for thinking abo
              └─────────────┘
 ```
 =======================
+```
++----------------------------+
+|     Single NDR Engine      |
++----------------------------+
+|                            |
+|   Wave Inputs              |
+|       │                    |
+|       ▼                    |
+|   [ Merge Inputs ]         |
+|       │                    |
+|       ▼                    |
+|   [ Contradict (–k·M) ]    |
+|       │                    |
+|       ▼                    |
+|   [ Hybrid Output (M + C) ]|
+|       │                    |
+|       ▼                    |
+|   [ Split Outputs ]        |
+|       │                    |
+|       ▼                    |
+|   Wave Outputs             |
+|                            |
++----------------------------+
+```
 
+=======================
 NDR Engine 
 
 Engine for Merging and Contradicting 3D Waves
