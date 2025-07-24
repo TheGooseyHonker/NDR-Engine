@@ -477,8 +477,6 @@ Future research and industrial development will likely address practical impleme
 
 =======================
 
-=======================
-
 Priors
 
 =======================
