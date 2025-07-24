@@ -2,6 +2,8 @@ This is a Defensive Publication
 
 NDR Engine:
 
+(past iterations are included)
+
 functions as an I/O Wave Contradictor: Ephemeral Dynamic Spiking Phasor Model
 
 This single‐module implementation handles
