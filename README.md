@@ -390,3 +390,124 @@ Figure Export Guidelines
 ---
 
 Copy-paste these sections into your README or specification to close enablement, abstraction, and drawing‐format gaps—your defensive publication will be rock‐solid.
+
+3D Wave Contradictor Calculator
+
+This calculator models a neuron as a 3-dimensional wave contradictor. You define a set of incoming waves (each with amplitude and direction), the script merges them into one resultant wave, and then outputs a contradictory wave scaled for damping or amplification.
+
+---
+
+Key Concepts
+
+• Each input wave is represented by:• Amplitude A
+• Direction angles θ (polar) and φ (azimuthal)
+
+• The merged wave W is the vector sum of all input waves.
+• The contradictory wave O is• O = −k × W  (for damping)
+• O = +k × W  (for amplification)
+where k is the modulation factor you choose.
+
+
+
+---
+
+Usage Steps
+
+1. Install Python (version ≥ 3.6).
+2. Copy the code below into a file named `wave_contradictor.py`.
+3. In the `if __name__ == "__main__"` block:• Fill in your input waves as `(amplitude, theta, phi)` tuples.
+• Set `k` (modulation factor) and `mode` (`"dampen"` or `"amplify"`).
+
+4. Run `python wave_contradictor.py` to see:• Resultant wave vector and magnitude.
+• Contradictory wave vector, magnitude, and direction.
+
+
+
+---
+
+Python Implementation
+
+import math
+from typing import List, Tuple
+
+Vector3 = Tuple[float, float, float]
+Wave  = Tuple[float, float, float]  # (amplitude, theta, phi)
+
+def spherical_to_cartesian(amplitude: float, theta: float, phi: float) -> Vector3:
+    """Convert spherical coords (r, θ, φ) to Cartesian (x, y, z)."""
+    x = amplitude * math.sin(theta) * math.cos(phi)
+    y = amplitude * math.sin(theta) * math.sin(phi)
+    z = amplitude * math.cos(theta)
+    return (x, y, z)
+
+def vector_add(v1: Vector3, v2: Vector3) -> Vector3:
+    """Add two 3D vectors."""
+    return (v1[0] + v2[0], v1[1] + v2[1], v1[2] + v2[2])
+
+def vector_scale(v: Vector3, scalar: float) -> Vector3:
+    """Scale a 3D vector by a scalar."""
+    return (v[0] * scalar, v[1] * scalar, v[2] * scalar)
+
+def magnitude(v: Vector3) -> float:
+    """Compute magnitude of a 3D vector."""
+    return math.sqrt(v[0]**2 + v[1]**2 + v[2]**2)
+
+def direction_angles(v: Vector3) -> Tuple[float, float]:
+    """Return (theta, phi) for vector v in spherical coords."""
+    r = magnitude(v)
+    if r == 0:
+        return (0.0, 0.0)
+    theta = math.acos(v[2] / r)
+    phi = math.atan2(v[1], v[0])
+    return (theta, phi)
+
+def merge_waves(waves: List[Wave]) -> Vector3:
+    """Merge multiple waves into a single resultant vector."""
+    result = (0.0, 0.0, 0.0)
+    for amp, theta, phi in waves:
+        cart = spherical_to_cartesian(amp, theta, phi)
+        result = vector_add(result, cart)
+    return result
+
+def contradictory_wave(resultant: Vector3, k: float, mode: str) -> Vector3:
+    """Compute the contradictory wave vector."""
+    factor = -k if mode == "dampen" else k
+    return vector_scale(resultant, factor)
+
+if __name__ == "__main__":
+    # ==== FILL IN YOUR INPUTS HERE ====
+    input_waves: List[Wave] = [
+        # Example: (amplitude, theta in radians, phi in radians)
+        (1.0, math.pi/4, math.pi/3),
+        (0.5, math.pi/2, math.pi/6),
+        (0.8, math.pi/3, math.pi/2),
+    ]
+    k = 0.7          # modulation factor
+    mode = "dampen"  # choose "dampen" or "amplify"
+    # ==================================
+
+    # Merge input waves
+    merged = merge_waves(input_waves)
+    mag_M = magnitude(merged)
+    ang_M = direction_angles(merged)
+
+    # Compute contradictory output
+    output = contradictory_wave(merged, k, mode)
+    mag_O = magnitude(output)
+    ang_O = direction_angles(output)
+
+    print(f"Resultant wave vector: {merged}")
+    print(f" Resultant magnitude: {mag_M:.4f}, θ={ang_M[0]:.4f}, φ={ang_M[1]:.4f}")
+
+    print(f"\nContradictory ({mode}) wave vector: {output}")
+    print(f" Contradictory magnitude: {mag_O:.4f}, θ={ang_O[0]:.4f}, φ={ang_O[1]:.4f}")
+
+---
+
+Next Steps
+
+• Experiment with different values of k to see how damping vs. amplification behaves.
+• Extend the model to include phase shifts or frequency components per wave.
+• Visualize the input, merged, and output vectors using a 3D plotting library (e.g., Matplotlib).
+• Integrate this function into your broader ACIR engine modules for real-time simulation.
+
