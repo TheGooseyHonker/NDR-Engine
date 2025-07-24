@@ -1,5 +1,165 @@
 This is a Defensive Publication
 
+Infinite 3D Wave Contradictor with Complex Phasors
+
+This extension adds frequency and phase to each input wave and tracks them as complex phasors. Waves of different frequencies are accumulated independently, and each merged phasor vector emits a scaled contradictory phasor.
+
+---
+
+1. Data Structures & Utilities
+
+import math
+import cmath
+from collections import defaultdict
+from typing import Iterator, Tuple, Callable, Dict, List
+
+# A single wave: (amplitude, θ, φ, frequency in Hz, phase in radians)
+Wave = Tuple[float, float, float, float, float]
+
+# A 3D complex vector: (x, y, z) each as complex
+Vector3C = Tuple[complex, complex, complex]
+
+def spherical_phasor(
+    amp: float,
+    theta: float,
+    phi: float,
+    phase: float
+) -> Vector3C:
+    """Convert (amp, θ, φ, phase) to a 3D phasor vector."""
+    # unit direction
+    ux = math.sin(theta) * math.cos(phi)
+    uy = math.sin(theta) * math.sin(phi)
+    uz = math.cos(theta)
+
+    # complex amplitude = A·e^{j·phase}
+    c_amp = cmath.exp(1j * phase) * amp
+
+    return (c_amp * ux, c_amp * uy, c_amp * uz)
+
+def add_v3c(a: Vector3C, b: Vector3C) -> Vector3C:
+    """Add two complex 3D vectors."""
+    return (a[0]+b[0], a[1]+b[1], a[2]+b[2])
+
+def scale_v3c(v: Vector3C, s: float) -> Vector3C:
+    """Scale a complex 3D vector by real scalar s."""
+    return (v[0]*s, v[1]*s, v[2]*s)
+
+---
+
+2. WaveConductor
+
+Accepts phasor outputs per frequency. You can cap or process arbitrarily.
+
+class WaveConductor:
+    def __init__(self, name: str, capacity: int = None):
+        self.name = name
+        self.capacity = capacity
+        # store tuples of (frequency, phasor vector)
+        self.received: List[Tuple[float, Vector3C]] = []
+
+    def __call__(self, freq: float, phasor: Vector3C):
+        if self.capacity is None or len(self.received) < self.capacity:
+            self.received.append((freq, phasor))
+
+    def summary(self):
+        print(f"{self.name}: received {len(self.received)} phasors")
+        # Optionally print details:
+        # for f,p in self.received: print(f"  {f} Hz → {p}")
+
+---
+
+3. PhasorWaveContradictor
+
+Maintains a dict of merged phasor vectors keyed by frequency.
+
+class PhasorWaveContradictor:
+    def __init__(
+        self,
+        k: float,
+        mode: str,
+        conductors: List[Callable[[float, Vector3C], None]]
+    ):
+        assert mode in ("dampen", "amplify")
+        self.k = k
+        self.mode = mode
+        self.conductors = conductors
+        # merged phasors per frequency
+        self._merged: Dict[float, Vector3C] = defaultdict(lambda: (0+0j, 0+0j, 0+0j))
+
+    def process(self, input_stream: Iterator[Wave]) -> Iterator[Tuple[float, Vector3C]]:
+        """
+        For each input wave:
+          1. Update merged phasor for its frequency
+          2. Compute contradictory phasor = ± k × merged
+          3. Dispatch to conductors
+          4. Yield (frequency, output phasor)
+        """
+        factor = -self.k if self.mode == "dampen" else self.k
+
+        for amp, θ, φ, freq, phase in input_stream:
+            ph = spherical_phasor(amp, θ, φ, phase)
+            # update merged phasor
+            merged_ph = self._merged[freq]
+            merged_ph = add_v3c(merged_ph, ph)
+            self._merged[freq] = merged_ph
+
+            # contradictory phasor
+            out_ph = scale_v3c(merged_ph, factor)
+
+            # dispatch
+            for cond in self.conductors:
+                cond(freq, out_ph)
+
+            yield freq, out_ph
+
+---
+
+4. Usage Example
+
+import itertools
+import math, random
+
+def wave_stream() -> Iterator[Wave]:
+    """Infinite random-phase, random-frequency waves."""
+    while True:
+        yield (
+            random.uniform(0.1, 1.0),         # amplitude
+            random.random()*math.pi,         # θ
+            random.random()*2*math.pi,       # φ
+            random.choice([50, 100, 200]),    # frequency Hz
+            random.random()*2*math.pi        # phase
+        )
+
+# Conductors
+cA = WaveConductor("A", capacity=100)
+cB = WaveConductor("B")  # no limit
+
+# Contradictor
+pw = PhasorWaveContradictor(k=0.8, mode="amplify", conductors=[cA, cB])
+
+# Process first 60 waves
+stream = wave_stream()
+for i, (f, ph) in enumerate(pw.process(stream), 1):
+    print(f"{i:02d}: {f} Hz → phasor {ph}")
+    if i >= 60:
+        break
+
+cA.summary()
+cB.summary()
+
+---
+
+Next Steps
+
+• Sample time-domain signals via
+`real{ph * exp(j·2πf·t)}` for plotting or simulation.
+• Add attenuation curves per conductor (frequency-dependent scaling).
+• Implement filter conductors that only accept certain bands.
+• Integrate this into your ACIR/NDR pipeline for real-time multi-frequency handling.
+• Visualize phasor trajectories in 3D over time (e.g., using Matplotlib’s quiver plots).
+
+===================
+
 Infinite 3D Wave Contradictor
 
 This module generalizes the “merged 3D wave contradictor” to handle
