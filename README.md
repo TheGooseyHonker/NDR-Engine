@@ -14,9 +14,9 @@ NDR Engine:
    │ NDR Cluster  │     │ NDR Cluster  │
    │   (Right)    │     │   (Left)     │
    └──────────────┘     └──────────────┘
-         │     ↘      ↙     │
-         │      [LLM Cortex]      │
-         │     ↙      ↘     │
+         │     ↘      ↙       │
+         │    [LLM Cortex]     │
+         │     ↙      ↘       │
    ┌──────────────┐     ┌──────────────┐
    │ Wave Outputs │     │ Wave Outputs │
    │ (Right Side) │     │ (Left Side)  │
