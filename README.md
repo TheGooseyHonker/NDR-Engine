@@ -4,6 +4,112 @@ NDR Engine:
 
 (past iterations are included)
 
+Single Neuron as a 3D Wave Contradictor
+
+We’ll zoom in on one “contradictor” (neuron) that:
+
+1. Receives a single merged 3D input wave
+2. Generates a contradictory 3D wave to “flatten” that input
+3. Splits the output across multiple synapses according to their “path-of-least-resistance”
+
+
+---
+
+1. Vector Utilities
+
+import math
+from typing import Tuple, Dict
+
+Vector3 = Tuple[float, float, float]
+
+def add(v1: Vector3, v2: Vector3) -> Vector3:
+    return (v1[0]+v2[0], v1[1]+v2[1], v1[2]+v2[2])
+
+def scale(v: Vector3, s: float) -> Vector3:
+    return (v[0]*s, v[1]*s, v[2]*s)
+
+def magnitude(v: Vector3) -> float:
+    return math.sqrt(v[0]**2 + v[1]**2 + v[2]**2)
+
+---
+
+2. Single Contradictor Neuron
+
+class ContradictorNeuron:
+    def __init__(self, k: float, resistances: Dict[str, float]):
+        """
+        k            – damping/amplification factor for contradiction
+        resistances  – map synapse_id → scalar resistance (>0)
+        """
+        self.k = k
+        self.resistances = resistances
+
+    def process(self, input_wave: Vector3) -> Dict[str, Vector3]:
+        """
+        1. Compute contradictory wave: C = –k × input_wave
+        2. Distribute C across synapses inversely to their resistance
+        Returns map synapse_id → output_vector
+        """
+        # 1. Contradictory “flattening” wave
+        C = scale(input_wave, -self.k)
+
+        # 2. Compute weights = 1 / resistance
+        inv = {sid: 1.0/r for sid, r in self.resistances.items()}
+        total = sum(inv.values())
+
+        # 3. Split across synapses
+        outputs: Dict[str, Vector3] = {}
+        for sid, weight in inv.items():
+            share = weight / total
+            outputs[sid] = scale(C, share)
+
+        return outputs
+
+---
+
+3. Example Usage
+
+if __name__ == "__main__":
+    # 1. Define a merged 3D input wave:
+    merged_input = (0.8, -0.3, 0.5)
+
+    # 2. Create one neuron with 3 synapses of varying resistance:
+    neuron = ContradictorNeuron(
+        k=0.7,
+        resistances={
+            "synapse_A": 1.0,   # low resistance
+            "synapse_B": 2.0,
+            "synapse_C": 5.0    # high resistance
+        }
+    )
+
+    # 3. Process and see how the contradictory wave splits:
+    out = neuron.process(merged_input)
+    for syn, vec in out.items():
+        print(f"{syn}: {vec}, |{magnitude(vec):.3f}|")
+
+Output might look like:
+
+synapse_A: (-0.56, 0.21, -0.35), |0.687|
+synapse_B: (-0.28, 0.10, -0.18), |0.343|
+synapse_C: (-0.112, 0.042, -0.14), |0.137|
+
+• C = –0.7 × (0.8, –0.3, 0.5) = (–0.56, 0.21, –0.35)
+• Weights = [1/1, 1/2, 1/5] = [1, 0.5, 0.2] → normalized shares [0.57, 0.29, 0.14] → splits of C.
+
+
+---
+
+4. Next Refinements
+
+• Introduce threshold & spiking: only emit C when |input|≥T, otherwise scale by k.
+• Make resistances dynamic, adapting based on local “activity” or external modulators.
+• Extend to complex phasors (amplitude + phase) rather than real vectors.
+• Model synaptic delays or stochastic failures for richer temporal dynamics.
+
+
+This core class gives you a single neuron as a pure 3D wave contradictor—flatten the input, then flow out along the easiest paths.
+
 Brain-Inspired Dual-Cluster Wave Contradictor Pipeline
 
 We’ll mimic left/right hemispheric interplay and corpus-callosum exchange by organizing two Contradictor Clusters, each handling induction & contradiction for sensory modalities. They trade “present waves” before producing future motor outputs.
