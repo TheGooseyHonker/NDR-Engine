@@ -1,6 +1,8 @@
 This is a Defensive Publication
 
-I/O Wave Contradictor: Ephemeral Dynamic Spiking Phasor Model
+NDR Engine:
+
+functions as an I/O Wave Contradictor: Ephemeral Dynamic Spiking Phasor Model
 
 This single‐module implementation handles
 
