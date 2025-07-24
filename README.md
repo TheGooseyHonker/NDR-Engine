@@ -32,6 +32,7 @@ NDR Engine:
 =======================
 
 NDR Engine 
+
 for Merging and Contradicting 3D Waves
 
 A Brain-Inspired Engine for 3D Wave Processing: Design, Architecture, and Implementation of Simple I/O and NDR Clusters
