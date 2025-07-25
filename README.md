@@ -212,6 +212,166 @@ if __name__ == "__main__":
         print(f"{oid}: {vec} (|{magnitude(vec):.3f}|)")
 
 ```
+
+1. Updated Engine Class
+File: ndr_engine/neighbor_aware_ndr.py
+```
+python
+import heapq
+from typing import Dict, Tuple, List, Optional
+import math
+
+from ndr_engine import SingleNDREngineWithModulator, Vector3, add, scale, magnitude
+
+class NeighborAwareNDREngine(SingleNDREngineWithModulator):
+    """
+    Extends SingleNDREngineWithModulator to:
+      - Route to k nearest neighbors when hybrid magnitude > threshold.
+      - Support Euclidean (position-based) or graph-based neighbor selection.
+      - Allow dynamic tuning of threshold and k_nearest at runtime.
+    """
+
+    def __init__(
+        self,
+        k: float,
+        resistances: Dict[str, float],
+        neighbor_positions: Dict[str, Vector3],
+        self_node_id: str,
+        threshold: float,
+        k_nearest: int,
+        neighbor_graph: Optional[Dict[str, Dict[str, float]]] = None,
+        use_graph: bool = False,
+        gaba: float = 0.0,
+        glutamate: float = 0.0,
+    ):
+        super().__init__(k, resistances, gaba, glutamate)
+        # Spatial positions and graph for neighbors
+        self.neighbor_positions = neighbor_positions
+        self.self_node_id = self_node_id
+        self.neighbor_graph = neighbor_graph or {}
+        self.use_graph = use_graph
+
+        # Plasticity-tunable parameters
+        self.threshold = threshold
+        self.k_nearest = k_nearest
+
+    # 1. Dynamic plasticity setters
+    def set_plasticity_params(self, threshold: float = None, k_nearest: int = None):
+        if threshold is not None:
+            self.threshold = threshold
+        if k_nearest is not None:
+            self.k_nearest = k_nearest
+
+    # 2. Dijkstra for graph distances
+    def _graph_distances(self) -> Dict[str, float]:
+        dist: Dict[str, float] = {nid: math.inf for nid in self.neighbor_graph}
+        dist[self.self_node_id] = 0.0
+        pq: List[Tuple[float, str]] = [(0.0, self.self_node_id)]
+        while pq:
+            d, node = heapq.heappop(pq)
+            if d > dist[node]:
+                continue
+            for nbr, w in self.neighbor_graph[node].items():
+                nd = d + w
+                if nd < dist[nbr]:
+                    dist[nbr] = nd
+                    heapq.heappush(pq, (nd, nbr))
+        return dist
+
+    def process(self, inputs: List[Vector3]) -> Dict[str, Vector3]:
+        # reuse merge + contradiction + hybrid
+        merged = (0.0, 0.0, 0.0)
+        for w in inputs:
+            merged = add(merged, w)
+        contradiction = scale(merged, -self.k)
+        hybrid = add(merged, contradiction)
+        mag = magnitude(hybrid)
+
+        # if below threshold, fallback
+        if mag < self.threshold:
+            return super().process(inputs)
+
+        # choose distances: graph or Euclidean
+        if self.use_graph and self.neighbor_graph:
+            distances = self._graph_distances()
+        else:
+            distances = {
+                nid: magnitude((
+                    self.neighbor_positions[nid][0] - self.neighbor_positions[self.self_node_id][0],
+                    self.neighbor_positions[nid][1] - self.neighbor_positions[self.self_node_id][1],
+                    self.neighbor_positions[nid][2] - self.neighbor_positions[self.self_node_id][2],
+                ))
+                for nid in self.neighbor_positions
+            }
+
+        # pick k nearest IDs
+        nearest = sorted(distances, key=distances.get)[: self.k_nearest]
+
+        # filter resistances
+        filtered = {oid: self.base_resistances[oid] for oid in nearest if oid in self.base_resistances}
+
+        # split by inverted resistance
+        inv = {oid: 1.0 / r for oid, r in filtered.items()}
+        total_inv = sum(inv.values())
+        return {oid: scale(hybrid, inv_r / total_inv) for oid, inv_r in inv.items()}
+2. Integration Steps
+Add neighbor_aware_ndr.py under ndr_engine/.
+```
+In ndr_engine/__init__.py:
+
+python
+from .neighbor_aware_ndr import NeighborAwareNDREngine
+Update README with “Runtime Plasticity & Graph Routing” section.
+```
+3. Usage Examples
+File: examples/dynamic_graph_routing.py
+```
+python
+from ndr_engine import NeighborAwareNDREngine, Vector3
+
+# Define 3D positions
+positions = {
+    "A": (0.0, 0.0, 0.0),
+    "B": (1.0, 0.0, 0.0),
+    "C": (0.0, 1.0, 0.0),
+    "D": (1.0, 1.0, 0.0),
+}
+
+# Define a weighted graph for non-Euclidean distances
+graph = {
+    "A": {"B": 1.0, "C": 3.0},
+    "B": {"A": 1.0, "D": 1.0},
+    "C": {"A": 3.0, "D": 1.0},
+    "D": {"B": 1.0, "C": 1.0},
+}
+
+engine = NeighborAwareNDREngine(
+    k=0.5,
+    resistances={"A":1.0,"B":2.0,"C":3.0,"D":4.0},
+    neighbor_positions=positions,
+    self_node_id="A",
+    threshold=0.2,
+    k_nearest=2,
+    neighbor_graph=graph,
+    use_graph=True,
+)
+
+# plasticity tuning at runtime
+engine.set_plasticity_params(threshold=0.5, k_nearest=3)
+
+inputs = [(0.3, 0.1, 0.0), (0.2, -0.2, 0.1)]
+outputs = engine.process(inputs)
+for nid, vec in outputs.items():
+    print(f"{nid}: {vec}")
+```
+4. Next Steps & Performance Notes
+For very large graphs, integrate networkx for optimized shortest-path queries.
+
+Cache distances per epoch when topology or weights are static.
+
+Expose plasticity methods to an external tuner or GUI for live studies.
+
+Combine Euclidean and graph weights for hybrid neighbor scoring.
 =======================
 
 NDR Engine 
