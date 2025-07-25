@@ -9,7 +9,7 @@ SOURCE MAP - Currently Updating!
 Verification of NDR Engine Components and Theories
 This document maps each major component and theoretical foundation of the Narcissistic Dissonance Resolution (NDR) Engine to peer-reviewed literature, demonstrating both accuracy and precision.
 
-CORE 16 SOURCES:
+CORE 16 COMPONENTS:
 ================
 
 Neuromodulatory Modules
@@ -83,7 +83,7 @@ Dijkstra, E. W. (1959). A note on two problems in connexion with graphs. Numeris
 
 Bentley, J. L. (1975). Multidimensional binary search trees used for associative searching. Communications of the ACM, 18(9), 509–517.
 
-SOURCES FOR OTHER COMPONENTS:
+OTHER COMPONENTS:
 ==========================
 
 
@@ -104,7 +104,7 @@ SOURCES FOR OTHER COMPONENTS:
 8) Next Directions & Performance Paths
 
 
-SOURCES: 3D Wave Acquisition & Representation
+COMPONENT 1: 3D Wave Acquisition & Representation
 ===================
 
 1.1 Multi-component Sensors
@@ -129,7 +129,7 @@ Quadtree hierarchical decomposition for 2D level-of-detail management (Finkel & 
 
 Octree spatial indexing for 3D multiscale partitioning (Meagher, 1982).
 
-[References] 
+[COMPONENT 1 References] 
 ============
 
 Cooley, J. W., & Tukey, J. W. (1965). An algorithm for the machine calculation of complex Fourier series. Mathematics of Computation, 19(90), 297–301.
@@ -150,7 +150,7 @@ Skolnik, M. I. (2008). Radar handbook (3rd ed.). McGraw-Hill Education.
 
 Taflove, A., & Hagness, S. C. (2005). Computational electrodynamics: The finite-difference time-domain method (3rd ed.). Artech House.
 
-SOURCES: Wave Merging & Signal Fusion
+COMPONENT 2: Wave Merging & Signal Fusion
 ====================
 
 Physics-based superposition with phase alignment and amplitude calibration (Feynman, Leighton, & Sands, 1964; Lyons, 2011).
@@ -161,7 +161,7 @@ Physics-informed neural networks enforcing boundary constraints (Raissi, Perdika
 
 Compatibility-driven strategies via Wave Function Collapse for artifact-free fusion (Hendrikx, Meijer, Van der Velden, & Iosup, 2013; Gumin, 2016).
 
-[References] 
+[COMPONENT 2 References] 
 ============
 
 Feynman, R. P., Leighton, R. B., & Sands, M. (1964). The Feynman lectures on physics, Vol. I: Mainly mechanics, radiation, and heat. Addison-Wesley.
@@ -178,7 +178,7 @@ Hendrikx, M., Meijer, S., Van der Velden, J., & Iosup, A. (2013). Procedural con
 
 Gumin, M. (2016). Wave Function Collapse [Computer software]. GitHub. https://github.com/mxgmn/WaveFunctionCollapse
 
-SOURCES: Contradictory (Antiphase) Wave Generation
+COMPONENT 3: Contradictory (Antiphase) Wave Generation
 ======================
 
 3.1 Antiphase Inversion for Destructive Interference
@@ -190,7 +190,7 @@ High-performance DSP blocks and FPGA logic can invert streaming samples on-the-f
 3.3 Homeostatic/Inhibitory Feedback in Biological Networks
 Neural circuits leverage homeostatic plasticity and inhibitory interneuron loops to stabilize activity via dynamic negation-like feedback—ensuring network balance and preventing runaway excitation3.
 
-[References] 
+[COMPONENT 3 References] 
 ============
 
 Nelson, P. A., & Elliott, S. J. (1992). Active control of sound. Academic Press.
@@ -209,7 +209,7 @@ Isaacson, J. S., & Scanziani, M. (2011). How inhibition shapes cortical activity
 
 
 
-SOURCES: Hybrid Wave Creation
+COMPONENT 4: Hybrid Wave Creation
 ===============
 
 Weighted linear combinations (α·merged + β·contradictory) enable parametric blending of original and inverted waves through scaled summation (Oppenheim & Schafer, 2010).
@@ -220,7 +220,7 @@ SIMD/MAC-based hybridization in hardware leverages parallel single-instruction m
 
 Emergent hybrid oscillations via excitatory–inhibitory microcircuit loops arise when balanced excitatory and inhibitory synaptic interactions produce network-level oscillatory dynamics (Buzsáki & Wang, 2012; Bartos, Vida, & Jonas, 2007).
 
-[References] 
+[COMPONENT 4 References] 
 ============
 
 Bartos, M., Vida, I., & Jonas, P. (2007). Synaptic mechanisms of synchronized gamma oscillations in inhibitory interneuron networks. Nature Reviews Neuroscience, 8(1), 45–56. https://doi.org/10.1038/nrn2044
@@ -235,7 +235,7 @@ Oppenheim, A. V., & Schafer, R. W. (2010). Discrete-time signal processing (3rd 
 
 Zienkiewicz, O. C., & Taylor, R. L. (2000). The finite element method: Solid mechanics (5th ed.). Butterworth-Heinemann.
 
-SOURCES: Output Splitting & Least-Resistance Routing
+COMPONENT 5: Output Splitting & Least-Resistance Routing
 =============================
 
 Fermat’s Principle of Least Time as a guiding law for wave paths (Born & Wolf, 1999).
@@ -246,7 +246,7 @@ FPGA/ASIC routable switch networks and programmable multiplexers (Maxfield, 2004
 
 Biological analog – axon-favoring low-resistance synaptic routes (Rall, 1969).
 
-[References] 
+[COMPONENT 5 References] 
 ============
 
 Born, M., & Wolf, E. (1999). Principles of optics (7th ed.). Cambridge University Press.
@@ -259,7 +259,7 @@ Pozar, D. M. (2012). Microwave engineering (4th ed.). Wiley.
 
 Rall, W. (1969). Time constants and electrotonic length of membrane cylinders and neurons. Biophysical Journal, 9(12), 1483–1508.
 
-SOURCES: Single-Engine Architectural Deep-Dive
+COMPONENT 6: Single-Engine Architectural Deep-Dive
 ========================
 
 Component / Theory	Citation
@@ -270,7 +270,7 @@ Current-division (inverse-resistance) splitting	[18]
 Dijkstra’s shortest-path neighbor routing	[15]
 k-d tree spatial indexing for nearest-neighbor selection	[16]
 
-[References] 
+[COMPONENT 6 References] 
 ============
 
 Farrant, M., & Nusser, Z. (2005). Variations on an inhibitory theme: Phasic and tonic activation of GABAA receptors. Nature Reviews Neuroscience, 6(3), 215–229.
@@ -285,7 +285,7 @@ Dingledine, R., Borges, K., Bowie, D., & Traynelis, S. F. (1999). The glutamate 
 
 Alexander, C. K., & Sadiku, M. N. O. (2006). Fundamentals of electric circuits (3rd ed.). McGraw-Hill Education.
 
-SOURCES: Cluster-Level Topologies & LLM “Cortex”
+COMPONENT 7: Cluster-Level Topologies & LLM “Cortex”
 =============
 
 7.1 Recursive NDR Clusters
@@ -303,7 +303,7 @@ Recursive feedback across clusters framed as free-energy minimization, unifying 
 
 Recurrent architectures supporting long-range dependencies, enabling infinite-range wave propagation and integration.
 
-[References] 
+[COMPONENT 7 References] 
 ============
 
 Betzel, R. F., & Bassett, D. S. (2017). Multi-scale brain networks: From micro- to macroscale connectomics. NeuroImage, 160, 73–83. https://doi.org/10.1016/j.neuroimage.2017.01.023
@@ -322,7 +322,7 @@ Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. Neural Computa
 
 Hopfield, J. J. (1982). Neural networks and physical systems with emergent collective computational abilities. Proceedings of the National Academy of Sciences, 79(8), 2554–2558. https://doi.org/10.1073/pnas.79.8.2554
 
-SOURCES: Next Directions & Performance Paths
+COMPONENT 8: Next Directions & Performance Paths
 =======================
 
 Large-graph scaling via NetworkX or SciPy’s KDTree caching strategies (Hagberg, Schult, & Swart, 2008; Virtanen et al., 2020; Friedman, Bentley, & Finkel, 1977).
@@ -333,7 +333,7 @@ GUI- and RL-driven tuners for live parameter sweeps (Bergstra & Bengio, 2012; Sn
 
 Hybrid Euclidean/graph neighbor-scoring pipelines (Shuman, Narang, Frossard, Ortega, & Vandergheynst, 2013).
 
-[References] 
+[COMPONENT 8 References] 
 ============
 
 Bergstra, J., & Bengio, Y. (2012). Random search for hyper-parameter optimization. Journal of Machine Learning Research, 13, 281–305.
