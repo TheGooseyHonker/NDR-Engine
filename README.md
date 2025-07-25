@@ -102,9 +102,9 @@ SOURCES FOR OTHER COMPONENTS:
 8) Next Directions & Performance Paths
 
 
+SOURCES: 3D Wave Acquisition & Representation
+===================
 
-1. 3D Wave Acquisition & Representation
-=======================================
 1.1 Multi-component Sensors
 Seismic arrays for high-fidelity spatiotemporal capture (Kennett & Engdahl, 1991).
 
@@ -146,8 +146,9 @@ Skolnik, M. I. (2008). Radar handbook (3rd ed.). McGraw-Hill Education.
 
 Taflove, A., & Hagness, S. C. (2005). Computational electrodynamics: The finite-difference time-domain method (3rd ed.). Artech House.
 
-2. Wave Merging & Signal Fusion
-2. Wave Merging & Signal Fusion
+SOURCES: Wave Merging & Signal Fusion
+====================
+
 Physics-based superposition with phase alignment and amplitude calibration (Feynman, Leighton, & Sands, 1964; Lyons, 2011).
 
 Domain decomposition and parallel fusion pipelines (Quarteroni & Valli, 1999; Pacheco, 2011).
@@ -171,8 +172,9 @@ Hendrikx, M., Meijer, S., Van der Velden, J., & Iosup, A. (2013). Procedural con
 
 Gumin, M. (2016). Wave Function Collapse [Computer software]. GitHub. https://github.com/mxgmn/WaveFunctionCollapse
 
-3. Contradictory (Antiphase) Wave Generation
-3. Contradictory (Antiphase) Wave Generation
+SOURCES: Contradictory (Antiphase) Wave Generation
+======================
+
 3.1 Antiphase Inversion for Destructive Interference
 Antiphase inversion produces a wave exactly 180° out of phase with the original, yielding cancellation when summed—foundational to active noise control in acoustics2.
 
@@ -199,8 +201,9 @@ Isaacson, J. S., & Scanziani, M. (2011). How inhibition shapes cortical activity
 
 
 
-4. Hybrid Wave Creation
-4. Hybrid Wave Creation
+SOURCES: Hybrid Wave Creation
+===============
+
 Weighted linear combinations (α·merged + β·contradictory) enable parametric blending of original and inverted waves through scaled summation (Oppenheim & Schafer, 2010).
 
 Wave Superposition–Finite Element Methods (WS-FEM) apply finite-element discretization to model the precise interaction of superposed wavefields in complex geometries (Zienkiewicz & Taylor, 2000).
@@ -222,8 +225,9 @@ Oppenheim, A. V., & Schafer, R. W. (2010). Discrete-time signal processing (3rd 
 
 Zienkiewicz, O. C., & Taylor, R. L. (2000). The finite element method: Solid mechanics (5th ed.). Butterworth-Heinemann.
 
-5. Output Splitting & Least-Resistance Routing
-5. Output Splitting & Least-Resistance Routing
+SOURCES: Output Splitting & Least-Resistance Routing
+=============================
+
 Fermat’s Principle of Least Time as a guiding law for wave paths (Born & Wolf, 1999).
 
 Proportional splitting via impedance/graph-weight inverses (Pozar, 2012).
@@ -243,8 +247,9 @@ Pozar, D. M. (2012). Microwave engineering (4th ed.). Wiley.
 
 Rall, W. (1969). Time constants and electrotonic length of membrane cylinders and neurons. Biophysical Journal, 9(12), 1483–1508.
 
-6. Single-Engine Architectural Deep-Dive
-6. Single-Engine Architectural Deep-Dive
+SOURCES: Single-Engine Architectural Deep-Dive
+========================
+
 Component / Theory	Citation
 Wave superposition & phase inversion for merge/contradict	[14]
 Global GABA-mediated resistance modulation	[1]
@@ -265,8 +270,9 @@ Dingledine, R., Borges, K., Bowie, D., & Traynelis, S. F. (1999). The glutamate 
 
 Alexander, C. K., & Sadiku, M. N. O. (2006). Fundamentals of electric circuits (3rd ed.). McGraw-Hill Education.
 
-7. Cluster-Level Topologies & LLM “Cortex”
-7. Cluster-Level Topologies & LLM “Cortex”
+SOURCES: Cluster-Level Topologies & LLM “Cortex”
+=============
+
 7.1 Recursive NDR Clusters
 Pairwise NDR clusters mimicking interhemispheric, modular network organization in the brain.
 
@@ -299,8 +305,9 @@ Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. Neural Computa
 
 Hopfield, J. J. (1982). Neural networks and physical systems with emergent collective computational abilities. Proceedings of the National Academy of Sciences, 79(8), 2554–2558. https://doi.org/10.1073/pnas.79.8.2554
 
-8. Next Directions & Performance Paths
-8. Next Directions & Performance Paths
+SOURCES: Next Directions & Performance Paths
+=======================
+
 Large-graph scaling via NetworkX or SciPy’s KDTree caching strategies (Hagberg, Schult, & Swart, 2008; Virtanen et al., 2020; Friedman, Bentley, & Finkel, 1977).
 
 STDP-style, activity-dependent plasticity rule modules (Song, Miller, & Abbott, 2000).
