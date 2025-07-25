@@ -1,5 +1,216 @@
 This is a Defensive Publication
+==============
 
+Neuroplasticity-Integrated NDR Engine
+Below we first verify that our “neuroplastic” extensions faithfully model core plasticity principles. Then we present a consolidated, refactored engine—NeuroplasticNDREngine—that you can drop into the NDR-Engine repo.
+
+1. Accuracy Verification
+Neuroplasticity refers to the nervous system’s capacity to reorganize its structure, function, or connections in response to stimuli.
+
+Intrinsic plasticity (threshold tuning) emulates how neurons adjust excitability to regulate firing rates.
+
+Structural plasticity (dynamic neighbor selection, connection addition/pruning, resistance updates) mirrors synaptic growth, sprouting, or elimination over time.
+
+By exposing threshold and k_nearest at runtime, and by allowing graph-based or Euclidean neighbor rewiring, our engine captures both functional and structural plasticity modes.
+
+2. Refactored Engine Class
+File: ndr_engine/neuroplastic_ndr_engine.py
+
+python
+import heapq
+import math
+from typing import Dict, Tuple, List, Optional
+
+from ndr_engine import SingleNDREngineWithModulator, Vector3, add, scale, magnitude
+
+class NeuroplasticNDREngine(SingleNDREngineWithModulator):
+    """
+    Combines wave merging/contradiction with:
+      - Runtime-tunable intrinsic plasticity (firing threshold).
+      - Structural plasticity (dynamic k_nearest, add/remove/update connections).
+      - Euclidean or graph-based neighbor selection.
+    """
+
+    def __init__(
+        self,
+        k: float,
+        resistances: Dict[str, float],
+        neighbor_positions: Dict[str, Vector3],
+        self_node_id: str,
+        threshold: float,
+        k_nearest: int,
+        neighbor_graph: Optional[Dict[str, Dict[str, float]]] = None,
+        use_graph: bool = False,
+        gaba: float = 0.0,
+        glutamate: float = 0.0,
+    ):
+        super().__init__(k, resistances, gaba, glutamate)
+        self.neighbor_positions = neighbor_positions
+        self.self_node_id = self_node_id
+        self.neighbor_graph = neighbor_graph or {}
+        self.use_graph = use_graph
+
+        # Intrinsic plasticity parameters
+        self.threshold = threshold
+        self.k_nearest = k_nearest
+
+    def set_plasticity_params(
+        self,
+        threshold: Optional[float] = None,
+        k_nearest: Optional[int] = None
+    ):
+        """Adjust firing threshold or neighbor count at runtime."""
+        if threshold is not None:
+            self.threshold = threshold
+        if k_nearest is not None:
+            self.k_nearest = k_nearest
+
+    def add_connection(
+        self,
+        nid: str,
+        resistance: float,
+        position: Vector3 = None,
+        graph_weight: float = None
+    ):
+        """Grow a new synapse: structural plasticity."""
+        self.base_resistances[nid] = resistance
+        if position:
+            self.neighbor_positions[nid] = position
+        if self.use_graph and graph_weight is not None:
+            self.neighbor_graph.setdefault(self.self_node_id, {})[nid] = graph_weight
+
+    def remove_connection(self, nid: str):
+        """Prune an existing synapse."""
+        self.base_resistances.pop(nid, None)
+        self.neighbor_positions.pop(nid, None)
+        for nbrs in self.neighbor_graph.values():
+            nbrs.pop(nid, None)
+
+    def update_connection_weight(self, nid: str, resistance: float):
+        """Adjust synaptic strength (resistance)."""
+        if nid in self.base_resistances:
+            self.base_resistances[nid] = resistance
+        if self.use_graph:
+            self.neighbor_graph.get(self.self_node_id, {})[nid] = resistance
+
+    def _graph_distances(self) -> Dict[str, float]:
+        """Dijkstra’s algorithm over neighbor_graph."""
+        dist = {nid: math.inf for nid in self.neighbor_graph}
+        dist[self.self_node_id] = 0.0
+        pq = [(0.0, self.self_node_id)]
+        while pq:
+            d, node = heapq.heappop(pq)
+            if d > dist[node]:
+                continue
+            for nbr, w in self.neighbor_graph[node].items():
+                nd = d + w
+                if nd < dist[nbr]:
+                    dist[nbr] = nd
+                    heapq.heappush(pq, (nd, nbr))
+        return dist
+
+    def process(self, inputs: List[Vector3]) -> Dict[str, Vector3]:
+        # 1. Merge and contradict
+        merged = (0.0, 0.0, 0.0)
+        for w in inputs:
+            merged = add(merged, w)
+        contradiction = scale(merged, -self.k)
+        hybrid = add(merged, contradiction)
+        mag = magnitude(hybrid)
+
+        # 2. Below threshold → default split
+        if mag < self.threshold:
+            return super().process(inputs)
+
+        # 3. Choose neighbor distances
+        if self.use_graph and self.neighbor_graph:
+            distances = self._graph_distances()
+        else:
+            self_pos = self.neighbor_positions[self.self_node_id]
+            distances = {
+                nid: magnitude((
+                    pos[0] - self_pos[0],
+                    pos[1] - self_pos[1],
+                    pos[2] - self_pos[2],
+                ))
+                for nid, pos in self.neighbor_positions.items()
+            }
+
+        # 4. Select k nearest
+        nearest = sorted(distances, key=distances.get)[:self.k_nearest]
+        filtered = {
+            oid: self.base_resistances[oid]
+            for oid in nearest
+            if oid in self.base_resistances
+        }
+
+        # 5. Split hybrid inversely by resistance
+        inv = {oid: 1.0 / r for oid, r in filtered.items()}
+        total_inv = sum(inv.values())
+        return {
+            oid: scale(hybrid, inv_r / total_inv)
+            for oid, inv_r in inv.items()
+        }
+3. Integration Steps
+Add neuroplastic_ndr_engine.py to ndr_engine/.
+
+In ndr_engine/__init__.py:
+
+python
+from .neuroplastic_ndr_engine import NeuroplasticNDREngine
+Update README under Neuroplastic Extensions with class reference and plasticity methods overview.
+
+4. Example Usage
+File: examples/neuroplastic_example.py
+
+python
+from ndr_engine import NeuroplasticNDREngine, Vector3
+
+# Positions & graph for four synapses
+positions = {
+    "A": (0.0, 0.0, 0.0),
+    "B": (1.0, 0.0, 0.0),
+    "C": (0.0, 1.0, 0.0),
+    "D": (1.0, 1.0, 0.0),
+}
+graph = {
+    "A": {"B": 1.0, "C": 3.0},
+    "B": {"A": 1.0, "D": 1.0},
+    "C": {"A": 3.0, "D": 1.0},
+    "D": {"B": 1.0, "C": 1.0},
+}
+
+engine = NeuroplasticNDREngine(
+    k=0.5,
+    resistances={"A":1.0,"B":2.0,"C":3.0,"D":4.0},
+    neighbor_positions=positions,
+    self_node_id="A",
+    threshold=0.2,
+    k_nearest=2,
+    neighbor_graph=graph,
+    use_graph=True,
+    gaba=0.1,
+    glutamate=0.05,
+)
+
+# Tweak plasticity at runtime
+engine.set_plasticity_params(threshold=0.4, k_nearest=3)
+engine.add_connection("E", resistance=2.5, position=(0.5,0.5,0.5), graph_weight=2.5)
+
+inputs = [(0.3, 0.1, 0.0), (0.2, -0.2, 0.1)]
+outputs = engine.process(inputs)
+for nid, vec in outputs.items():
+    print(f"{nid}: {vec} (|{magnitude(vec):.3f}|)")
+5. Next Directions
+For large-scale graphs, integrate networkx or scipy.spatial.KDTree for faster neighbor queries.
+
+Build activity-dependent plasticity rules (e.g., STDP-like updates to resistance).
+
+Expose plasticity controls to tunable GUIs or RL agents for automated adaptation.
+
+With these additions, the NDR Engine not only routes waves by proximity or topology but learns—reshaping thresholds, synapses, and connectivity in flight.
+
+==============
 NDR Engine Clusters + LLM (For conditioning, LLM is responsible for thinking about "past") :
 
 ```
