@@ -1,8 +1,81 @@
 This is a Defensive Publication
 ==============
 
-Neuroplasticity-Integrated NDR Engine
-Below we first verify that our “neuroplastic” extensions faithfully model core plasticity principles. Then we present a consolidated, refactored engine—NeuroplasticNDREngine—that you can drop into the NDR-Engine repo.
+SOURCE MAP - Currently Updating!
+
+Verification of NDR Engine Components and Theories
+This document maps each major component and theoretical foundation of the Narcissistic Dissonance Resolution (NDR) Engine to peer-reviewed literature, demonstrating both accuracy and precision. In-text parenthetical numbers correspond to the numbered references listed at the end.
+
+Neuromodulatory Modules
+GABA mediates rapid phasic and tonic inhibition, effectively resetting excessive neural activity (1).
+
+Serotonin (5-HT) regulates mood and baseline arousal, shaping emotional and motivational tone (2).
+
+Norepinephrine (NE) implements adaptive gain modulation, balancing explorative versus exploitative behavior (3).
+
+Acetylcholine (ACh) orchestrates focused attention and governs the encoding–consolidation trade-off (4).
+
+Dopamine (DA) conveys reward prediction error signals critical for reinforcement learning (5).
+
+Brain-Derived Neurotrophic Factor (BDNF) supports synaptic consolidation and long-term potentiation (6).
+
+Phosphorylated tau (P-tau) drives synaptic downscaling and structural pruning over longer timescales (7).
+
+Neuroplasticity Extensions
+Intrinsic plasticity adjusts neuronal excitability thresholds in an activity-dependent manner (8).
+
+Structural plasticity encompasses experience-driven synaptic growth, sprouting, and pruning (9).
+
+Spike-Timing-Dependent Plasticity (STDP) fine-tunes synaptic weights by precise pre- and postsynaptic timing (10).
+
+Theoretical Foundations
+Cognitive dissonance resolution defines the core “Contradiction Gap” metric driving adaptive change (11).
+
+Continuous feedback control loops govern dynamic adjustment of contradiction gain (12).
+
+Utility-based agent modeling formalizes resistance weighting and action selection via expected-value maximization (13).
+
+Algorithmic Implementation
+Wave-based contradiction applies superposition and phase inversion principles from classical wave physics (14).
+
+Graph-based neighbor selection uses Dijkstra’s shortest-path algorithm for efficient connectivity mapping (15).
+
+Spatial indexing employs k-d tree structures for rapid nearest-neighbor queries in multidimensional spaces (16).
+
+References
+Farrant, M., & Nusser, Z. (2005). Variations on an inhibitory theme: Phasic and tonic activation of GABAA receptors. Nature Reviews Neuroscience, 6(3), 215–229.
+
+Meneses, A. (1999). 5-HT receptor subtypes and their role in memory and cognition. Behavioural Brain Research, 100(1–2), 107–113.
+
+Aston-Jones, G., & Cohen, J. D. (2005). An integrative theory of locus coeruleus–norepinephrine function: Adaptive gain and optimal performance. Annual Review of Neuroscience, 28, 403–450.
+
+Hasselmo, M. E., & McGaughy, J. (2004). High acetylcholine levels set circuit dynamics for attention and encoding and low acetylcholine levels set dynamics for consolidation. Progress in Brain Research, 145, 207–231.
+
+Schultz, W. (1998). Predictive reward signal of dopamine neurons. Journal of Neurophysiology, 80(1), 1–27.
+
+Park, H., & Poo, M. M. (2013). Neurotrophin regulation of neural circuit development and function. Nature Reviews Neuroscience, 14(1), 7–23.
+
+Wang, Y., & Mandelkow, E. (2016). Tau in physiology and pathology. Nature Reviews Neuroscience, 17(1), 5–21.
+
+Zhang, W., & Linden, D. J. (2003). The other side of the engram: Experience-driven changes in neuronal intrinsic excitability. Nature Reviews Neuroscience, 4(11), 885–900.
+
+Holtmaat, A., & Svoboda, K. (2009). Experience-dependent structural synaptic plasticity in the mammalian brain. Nature Reviews Neuroscience, 10(9), 647–658.
+
+Bi, G. Q., & Poo, M. M. (1998). Synaptic modifications in cultured hippocampal neurons: Dependence on spike timing, synaptic strength, and postsynaptic cell type. Journal of Neuroscience, 18(24), 10464–10472.
+
+Festinger, L. (1957). A Theory of Cognitive Dissonance. Stanford University Press.
+
+Åström, K. J., & Murray, R. M. (2008). Feedback Systems: An Introduction for Scientists and Engineers. Princeton University Press.
+
+Simon, H. A. (1955). A behavioral model of rational choice. Quarterly Journal of Economics, 69(1), 99–118.
+
+Feynman, R. P., Leighton, R. B., & Sands, M. (1964). The Feynman Lectures on Physics (Vol. I). Addison-Wesley.
+
+Dijkstra, E. W. (1959). A note on two problems in connexion with graphs. Numerische Mathematik, 1(1), 269–271.
+
+Bentley, J. L. (1975). Multidimensional binary search trees used for associative searching. Communications of the ACM, 18(9), 509–517.
+
+***Content From HERE on out is ALL AI-Assissted using Microsoft Copilot. This is some pretty dense stuff!***
 
 1. Accuracy Verification
 Neuroplasticity refers to the nervous system’s capacity to reorganize its structure, function, or connections in response to stimuli.
