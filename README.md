@@ -5,6 +5,9 @@ This is a Defensive Publication
 ===================
 ***Missing in-text citations: ALL OF THEM :O***
 
+“Are you feeling it now, Mr. Krabs?”
+- Spongebob Squarepants
+
 ***Content From HERE on out is ALL AI-Assissted using Microsoft Copilot. 
 All code or programming here was AI-generated. Hope you enjoy!***
 ==============
