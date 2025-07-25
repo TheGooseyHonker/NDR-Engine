@@ -1,7 +1,6 @@
 This is a Defensive Publication
 ==============
-
-SOURCE MAP - Currently Updating!
+🚧 WIP – Citation Mapping in Progress
 
 ***Content From HERE on out is ALL AI-Assissted using Microsoft Copilot. 
 All code or programming here was AI-generated. Hope you enjoy!***
