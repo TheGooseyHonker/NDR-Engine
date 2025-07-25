@@ -3,6 +3,9 @@ This is a Defensive Publication
 
 SOURCE MAP - Currently Updating!
 
+***Content From HERE on out is ALL AI-Assissted using Microsoft Copilot. This is some pretty dense stuff!***
+==============
+
 Verification of NDR Engine Components and Theories
 This document maps each major component and theoretical foundation of the Narcissistic Dissonance Resolution (NDR) Engine to peer-reviewed literature, demonstrating both accuracy and precision. In-text parenthetical numbers correspond to the numbered references listed at the end.
 
