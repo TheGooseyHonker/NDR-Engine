@@ -605,7 +605,7 @@ class NeighborAwareNDREngine(SingleNDREngineWithModulator):
 Add neighbor_aware_ndr.py under ndr_engine/.
 ```
 In ndr_engine/__init__.py:
-
+```
 python
 from .neighbor_aware_ndr import NeighborAwareNDREngine
 Update README with “Runtime Plasticity & Graph Routing” section.
@@ -651,6 +651,7 @@ outputs = engine.process(inputs)
 for nid, vec in outputs.items():
     print(f"{nid}: {vec}")
 ```
+
 4. Next Steps & Performance Notes
 For very large graphs, integrate networkx for optimized shortest-path queries.
 
