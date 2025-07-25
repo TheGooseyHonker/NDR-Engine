@@ -48,7 +48,10 @@ Graph-based neighbor selection uses Dijkstra’s shortest-path algorithm for eff
 
 Spatial indexing employs k-d tree structures for rapid nearest-neighbor queries in multidimensional spaces (16).
 
-References
+[[[References] ============] ============]
+============
+
+
 Farrant, M., & Nusser, Z. (2005). Variations on an inhibitory theme: Phasic and tonic activation of GABAA receptors. Nature Reviews Neuroscience, 6(3), 215–229.
 
 Meneses, A. (1999). 5-HT receptor subtypes and their role in memory and cognition. Behavioural Brain Research, 100(1–2), 107–113.
@@ -127,7 +130,7 @@ Quadtree hierarchical decomposition for 2D level-of-detail management (Finkel & 
 
 Octree spatial indexing for 3D multiscale partitioning (Meagher, 1982).
 
-References
+[[References] ============] ============
 Cooley, J. W., & Tukey, J. W. (1965). An algorithm for the machine calculation of complex Fourier series. Mathematics of Computation, 19(90), 297–301.
 
 Elfes, A. (1989). Using occupancy grids for mobile robot perception and navigation. Computer, 22(6), 46–57.
@@ -157,7 +160,7 @@ Physics-informed neural networks enforcing boundary constraints (Raissi, Perdika
 
 Compatibility-driven strategies via Wave Function Collapse for artifact-free fusion (Hendrikx, Meijer, Van der Velden, & Iosup, 2013; Gumin, 2016).
 
-References
+[[References] ============] ============
 Feynman, R. P., Leighton, R. B., & Sands, M. (1964). The Feynman lectures on physics, Vol. I: Mainly mechanics, radiation, and heat. Addison-Wesley.
 
 Lyons, R. G. (2011). Understanding digital signal processing (3rd ed.). Prentice Hall.
@@ -184,7 +187,7 @@ High-performance DSP blocks and FPGA logic can invert streaming samples on-the-f
 3.3 Homeostatic/Inhibitory Feedback in Biological Networks
 Neural circuits leverage homeostatic plasticity and inhibitory interneuron loops to stabilize activity via dynamic negation-like feedback—ensuring network balance and preventing runaway excitation3.
 
-References
+[[References] ============] ============
 Nelson, P. A., & Elliott, S. J. (1992). Active control of sound. Academic Press.
 
 Kuo, S. M., & Morgan, D. R. (1996). Active noise control systems: Algorithms and DSP implementations. Wiley.
@@ -212,7 +215,7 @@ SIMD/MAC-based hybridization in hardware leverages parallel single-instruction m
 
 Emergent hybrid oscillations via excitatory–inhibitory microcircuit loops arise when balanced excitatory and inhibitory synaptic interactions produce network-level oscillatory dynamics (Buzsáki & Wang, 2012; Bartos, Vida, & Jonas, 2007).
 
-References
+[[References] ============] ============
 Bartos, M., Vida, I., & Jonas, P. (2007). Synaptic mechanisms of synchronized gamma oscillations in inhibitory interneuron networks. Nature Reviews Neuroscience, 8(1), 45–56. https://doi.org/10.1038/nrn2044
 
 Buzsáki, G., & Wang, X.-J. (2012). Mechanisms of gamma oscillations. Annual Review of Neuroscience, 35, 203–225. https://doi.org/10.1146/annurev-neuro-061010-113628
@@ -236,7 +239,7 @@ FPGA/ASIC routable switch networks and programmable multiplexers (Maxfield, 2004
 
 Biological analog – axon-favoring low-resistance synaptic routes (Rall, 1969).
 
-References
+[[References] ============] ============
 Born, M., & Wolf, E. (1999). Principles of optics (7th ed.). Cambridge University Press.
 
 Hauck, S., & DeHon, A. (Eds.). (2008). Reconfigurable computing: The theory and practice of FPGA-based systems. Morgan Kaufmann.
@@ -257,7 +260,7 @@ Glutamate-mediated excitatory scaling	[17]
 Current-division (inverse-resistance) splitting	[18]
 Dijkstra’s shortest-path neighbor routing	[15]
 k-d tree spatial indexing for nearest-neighbor selection	[16]
-References
+[[References] ============] ============
 Farrant, M., & Nusser, Z. (2005). Variations on an inhibitory theme: Phasic and tonic activation of GABAA receptors. Nature Reviews Neuroscience, 6(3), 215–229.
 
 Feynman, R. P., Leighton, R. B., & Sands, M. (1964). The Feynman lectures on physics. Vol. I: Mainly mechanics, radiation, and heat. Addison-Wesley.
@@ -288,7 +291,7 @@ Recursive feedback across clusters framed as free-energy minimization, unifying 
 
 Recurrent architectures supporting long-range dependencies, enabling infinite-range wave propagation and integration.
 
-References
+[[References] ============] ============
 Betzel, R. F., & Bassett, D. S. (2017). Multi-scale brain networks: From micro- to macroscale connectomics. NeuroImage, 160, 73–83. https://doi.org/10.1016/j.neuroimage.2017.01.023
 
 Innocenti, G. M. (1986). General organization of callosal connections in the cerebral cortex. In J. J. Pandya & V. B. Mountcastle (Eds.), Handbook of sensory physiology (Vol. 5, Part 2, pp. 291–330). Springer.
@@ -316,7 +319,7 @@ GUI- and RL-driven tuners for live parameter sweeps (Bergstra & Bengio, 2012; Sn
 
 Hybrid Euclidean/graph neighbor-scoring pipelines (Shuman, Narang, Frossard, Ortega, & Vandergheynst, 2013).
 
-References
+[[References] ============] ============
 Bergstra, J., & Bengio, Y. (2012). Random search for hyper-parameter optimization. Journal of Machine Learning Research, 13, 281–305.
 
 Friedman, J. H., Bentley, J. L., & Finkel, R. A. (1977). An algorithm for finding best matches in logarithmic expected time. ACM Transactions on Mathematical Software (TOMS), 3(3), 209–226.
@@ -1106,7 +1109,7 @@ Registered parallel pipelines (to compensate for environmental variability and m
 Representative studies demonstrate speedups of up to 16–37× over CPU-only designs using modern GPUs or FPGA implementations, with power consumption reductions exceeding 80% in some cases. Hardware scaling and data-centric parallelism ensure that trillions of Simple I/O Engines performing synchronized operations are both feasible and efficient34.
 
 10. Summary Table: Key Parameters and Processes at Each Engine Design Stage
-Stage	Key Parameters/Processes	References/Notes
+Stage	Key Parameters/Processes	[[References] ============] ============/Notes
 Input Acquisition/Representation	Sensor fidelity, 3D vector fidelity, data rates, spatial/temporal sampling, level-of-detail	[11], [54], [12], [38], [56]
 Wave Merging/Signal Fusion	Superposition, phase alignment, vector combination, normalization	[19], [28], [27], [13], [24]
 Contradictory Wave Generation	Antiphase production, inversion logic, destructive interference, programmable logic configuration	[18], [21], [30], [32], [39]
