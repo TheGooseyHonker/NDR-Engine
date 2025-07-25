@@ -48,7 +48,7 @@ Graph-based neighbor selection uses Dijkstra’s shortest-path algorithm for eff
 
 Spatial indexing employs k-d tree structures for rapid nearest-neighbor queries in multidimensional spaces (16).
 
-[References] 
+[CORE 16 References] 
 ============
 
 Farrant, M., & Nusser, Z. (2005). Variations on an inhibitory theme: Phasic and tonic activation of GABAA receptors. Nature Reviews Neuroscience, 6(3), 215–229.
