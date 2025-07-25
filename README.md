@@ -75,7 +75,7 @@ Dijkstra, E. W. (1959). A note on two problems in connexion with graphs. Numeris
 
 Bentley, J. L. (1975). Multidimensional binary search trees used for associative searching. Communications of the ACM, 18(9), 509–517.
 
-***Content From HERE on out is ALL AI-Assissted using Microsoft Copilot. This is some pretty dense stuff!***
+===================
 
 1. Accuracy Verification
 Neuroplasticity refers to the nervous system’s capacity to reorganize its structure, function, or connections in response to stimuli.
