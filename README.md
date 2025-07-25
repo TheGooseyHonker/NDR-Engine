@@ -1,7 +1,7 @@
 This is a Defensive Publication
 ==============
 
-🚧 🚧 🚧 WIP – Citation Mapping in Progress 🚧 🚧 🚧 
+🚧WIP – Citation Mapping in Progress🚧 
 ===================
 
 ***Content From HERE on out is ALL AI-Assissted using Microsoft Copilot. 
