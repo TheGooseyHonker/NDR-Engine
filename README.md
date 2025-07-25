@@ -3,7 +3,8 @@ This is a Defensive Publication
 
 SOURCE MAP - Currently Updating!
 
-***Content From HERE on out is ALL AI-Assissted using Microsoft Copilot. All code or programming here was AI-generated. This is some pretty dense stuff! Hope you enjoy!***
+***Content From HERE on out is ALL AI-Assissted using Microsoft Copilot. 
+All code or programming here was AI-generated. Hope you enjoy!***
 ==============
 
 Verification of NDR Engine Components and Theories
