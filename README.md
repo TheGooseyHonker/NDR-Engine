@@ -7,7 +7,10 @@ SOURCE MAP - Currently Updating!
 ==============
 
 Verification of NDR Engine Components and Theories
-This document maps each major component and theoretical foundation of the Narcissistic Dissonance Resolution (NDR) Engine to peer-reviewed literature, demonstrating both accuracy and precision. In-text parenthetical numbers correspond to the numbered references listed at the end.
+This document maps each major component and theoretical foundation of the Narcissistic Dissonance Resolution (NDR) Engine to peer-reviewed literature, demonstrating both accuracy and precision.
+
+CORE 16 SOURCES:
+================
 
 Neuromodulatory Modules
 GABA mediates rapid phasic and tonic inhibition, effectively resetting excessive neural activity (1).
@@ -78,28 +81,30 @@ Dijkstra, E. W. (1959). A note on two problems in connexion with graphs. Numeris
 
 Bentley, J. L. (1975). Multidimensional binary search trees used for associative searching. Communications of the ACM, 18(9), 509–517.
 
-Which slice should we tackle first? For example:
+SOURCES FOR OTHER COMPONENTS:
+==========================
 
-3D Wave Acquisition & Representation
 
-Wave Merging & Signal Fusion
+1) 3D Wave Acquisition & Representation
 
-Contradictory (Antiphase) Wave Generation
+2) Wave Merging & Signal Fusion
 
-Hybrid Wave Creation
+3) Contradictory (Antiphase) Wave Generation
 
-Output Splitting & Least-Resistance Routing
+4) Hybrid Wave Creation
 
-Single-Engine Architectural Deep-Dive
+5) Output Splitting & Least-Resistance Routing
 
-Cluster-Level Topologies & LLM “Cortex”
+6) Single-Engine Architectural Deep-Dive
 
-Next Directions & Performance Paths
+7) Cluster-Level Topologies & LLM “Cortex”
 
-Pick one, and I’ll furnish full APA-style citations for every method and theory in that section.
+8) Next Directions & Performance Paths
+
+
 
 1. 3D Wave Acquisition & Representation
-1. 3D Wave Acquisition & Representation
+=======================================
 1.1 Multi-component Sensors
 Seismic arrays for high-fidelity spatiotemporal capture (Kennett & Engdahl, 1991).
 
