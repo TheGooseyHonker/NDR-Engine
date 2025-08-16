@@ -10,8 +10,7 @@ This is a Defensive Publication
 
 
 
-***Content From HERE on out is ALL AI-Assissted using Microsoft Copilot. 
-All code or programming here was AI-generated. Hope you enjoy!***
+***From this point onward, all written and coded material was co‑developed with Microsoft Copilot. The core hypotheses, conceptual framing, and design intentions are my own. Copilot assisted by generating draft code, expanding explanations, and suggesting related technical patterns drawn from its training and available resources. All outputs are presented as‑is and have not yet been fully verified by me. Have fun!***
 ==============
 
 Remember, because entropy thinkers are generally symmetrical (to correlate recursively), you'd need inputs just like us! It's SUPER SIMPLE really! One side of you must mirror and recurse to the other side! So: Left ear(X number mics = X number ear input neurons), Left eye(X number cameras = X number cornea crystals), Left skin(x number pressure sensors = x number skin nerve endings... relative hair follicle density????), Left leg+arm(simple robotics with control delegated to LLM!); then mirror to right! Yay, Lightspeed entropy thinker zooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooom!!!!!!! :D
