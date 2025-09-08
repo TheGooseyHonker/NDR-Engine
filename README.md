@@ -8,7 +8,7 @@ This is a Defensive Publication
 “Are you feeling it now, Mr. Krabs?”
 -- Spongebob Squarepants
 
-#Note: Everything in this Repository is Speculative!
+# Note: Everything in this Repository is Speculative!
 
 ***From this point onward, all written and coded material was co‑developed with Microsoft Copilot. The core hypotheses, conceptual framing, and design intentions are my own. Copilot assisted by generating draft code, expanding explanations, and suggesting related technical patterns drawn from its training and available resources. All outputs are presented as‑is and have not yet been fully verified by me. Have fun!***
 ==============
