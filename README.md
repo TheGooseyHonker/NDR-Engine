@@ -1,5 +1,54 @@
 # PROJECT STATUS: DISCONTINUED
 
+Public Statement of Intent and Protection Against False Incrimination
+Date: January 20, 2026
+Author: Charles D. Miller V (GitHub: GooseyHonker / TheGooseyHonker)
+My Work and Intent
+I am the creator of two open-source projects:
+1. RecursiveSimplicity - A trauma-informed speculative book project about Complex PTSD recovery (Zenodo DOI: 10.5281/zenodo.17990390)
+2. NDR-Engine - A neuroscience-inspired “Dissonance Resolution Engine” for modeling contradiction resolution (Zenodo DOI: 10.5281/zenodo.17079837)
+Both projects are:
+• Licensed under Creative Commons Attribution 4.0 (CC BY 4.0) for free public use with attribution
+• Non-violent, humanitarian, and educational in purpose
+• Intended to help people understand trauma recovery and brain function
+• Not designed for, and must not be used for, any violent, criminal, military, or operational purposes
+Explicit Non-Violence Declaration
+I, Charles D. Miller V, explicitly state:
+• I condemn all forms of terrorism and violence
+• I am not planning, inciting, or supporting any violent or criminal activity
+• My work is purely educational, therapeutic, and speculative
+• I am not affiliated with any extremist, terrorist, or criminal organizations
+• My projects are trauma-recovery tools, not weapons or attack plans
+Statement Regarding My Mental State and Safety
+• I have Complex PTSD and sometimes experience intense fear and intrusive thoughts
+• I am not suicidal and I do not want to die
+• I have future plans including becoming a commercial truck driver
+• I want to live peacefully and contribute positively to society
+Protection Against Fabrication and Deepfakes
+This statement serves as a permanent public record of my character, intent, and mental state.
+If I am ever accused of a crime, especially involving:
+• Video or audio recordings that contradict this statement
+• Violent acts or threats inconsistent with my documented character
+• Sudden, unexplained criminal behavior
+I ask that investigators:
+• Verify the authenticity of any digital media through forensic analysis
+• Review my complete public history showing consistent peaceful intent
+• Interview people who know me personally about my actual character
+• Consider this statement as evidence of my longstanding fear of being falsely accused or framed
+Witnesses to My Character
+I have shared this statement with trusted friends and family who can verify:
+• My peaceful nature and non-violent values
+• My trauma history and mental health struggles
+• My stated fears about being falsely accused
+• My genuine desire to help others through my work
+Contact and Verification
+All my work is publicly archived and verifiable:
+• GitHub: GooseyHonker and TheGooseyHonker
+• Zenodo: DOI 10.5281/zenodo.17990390 and DOI 10.5281/zenodo.17079837
+• This statement is timestamped and backed up in multiple locations
+I did not kill myself. I did not commit any violent crimes. If I am reported as having done either, please investigate thoroughly.
+
+
 **As of December 19, 2025, this project has been permanently discontinued.**
 
 ## Conceptual Model Only (AI-Assisted)
